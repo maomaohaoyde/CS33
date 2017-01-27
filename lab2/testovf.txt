@@ -1,0 +1,3 @@
+With -O2 flag, the program optimize big+LONG_MAX<big to LONG_MAX<0 which is false, so it uses xorl eax,eax to ensure the return value is false. But there is no overflow in the operation.
+With -O2 -fsanitize=undefined flag, the function adds big and LONG_MAX together and the function jumps to L6 if overflow occurs. In L6 _ubsan_handle_add_overflow is called to print a runtime error message and pause the function
+With -O2 -fwrapv flag, the function adds big and LONG_MAX together and compares the result with big.The function helps wrap up around overflowed number

@@ -1,0 +1,29 @@
+2.64
+int any_odd_one(unsigned x)
+{
+	return x & Ox55555555;
+}
+
+2.71
+A.This code does not do sign extention for negative bytes.
+B.
+ int xbyte(packet_t word, int bytenum)
+{
+    return ((word<<((3-bytenum)<<3))>>24);
+}
+
+2.72
+A.sizeof operator returns a value of size_t, which is defined as unsigned. This makes the result of whole expression unsigned, constantly greater than 0.
+B.
+void copy_int(int val, void *buf, int maxbytes)
+{
+	if (maxbytew-(int)sizeof(val)>=0)
+	   memcpy(buf,(void*)&val,sizeof(val));
+}
+
+2.81
+A. It returns 0 when x=0x80000000 because -x=0x80000000 it's the minimum int.
+B. y*17 is an undefined behavior if y>INT_MAX/17.
+C. It always returns. ~x+~y+1=~x+1+~y+1-1=-x+-y-1=-(x+y)-1=~(x+y)
+D. It always returns 0 unless x=y. the LHS always yields a positive result as the RHS always return a negative result.
+E. It always returns one because the LHS expression gets rid of the last two digits of x and replaces them with 0s. The result will always be smaller than or equal to x itself.

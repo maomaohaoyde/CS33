@@ -1,0 +1,31 @@
+1.Explain why the instructions in the trace did not produce the correct mathematical result. Which instructions caused the problem, exactly?
+-4398042316799(0xFFFFFFFFFD60E979) is a very small number that is likely to cause underflow when dealing with computation of it. 
+0x00000000005436af <arith_driver+431>lisp.h:700    lea 0x0(,%rbp,4),%rax       \
+         rax=0xce39231c6f4c71bc this instruction caused the underflow, because 4*rbp is too small
+
+2.Explain why the shell command emacs -batch -eval '(print most-positive-fixnum)' outputs 2305843009213693951. Where did the number 2305843009213693951 come from? Explain in terms of the Emacs source code.
+In lisp.h, most-positive-fixnum is defined as EMACS_INT_MAX>>INTTYPEBITS. INTYPEBITS=GCTYPEBITS-1 and GCTYPEBITS=3. most-positive-fixnum is therefore EMACS_INX_MAX>>2, which is 2305843009213693951
+
+3.Explain why the shell command emacs -batch -eval '(print (* most-positive-fixnum most-positive-fixnum))' outputs only 1.
+Most-positive-fixnum times itself will cause an overflow, and the way emacs deals with it is  if (INT_MULTIPLY_OVERFLOW (accum, next))
+            {
+              EMACS_UINT a = accum, b = next, ab = a * b;
+              overflow = 1;
+              accum = ab & INTMASK;
+            } where INTMASK is INT_MAX>>(INTTYPEBITS)
+ab is a*b where the first bits are trimmed. The result accum is 1.
+ 
+
+4.The Emacs executable was compiled with GCC's -O2 option. Suppose it had also been compiled with -fsanitize=undefined. Explain any problems the trace would run into, or if there would not be a problem explain why not.
+There will not be a problem since the overflow happens in the lea instruction which ignores the overflow and does not set the overflow flag. So the function can not detect the overflow and don't produce runtime error message.
+
+
+5.Similarly, discuss whether and how -fwrapv would have caused problems.
+When overflow happens, the resulted will be wrapped and nothing will happen because the overflow happens during the lea instruction which does not set the overflow flag.
+
+6.Suppose we assume -fwrapv is used. Suggest changes to how Emacs does integer multiplication that should help improve its performance. Focus on integer multiplication; don't alter the machinery Emacs uses to decide which flavor of multiplication to do. 
+Get rid of the if statement. The result will be wrapped when overflow happens so there is no need to deal with it in the source code.
+
+
+7.How significant are the efficiency differences discussed above, in the context of Emacs execution?
+The effiency difference is pretty significant since there are number of instructions in the if statement and one of them is multiplication which takes more time. 

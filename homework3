@@ -1,0 +1,20 @@
+I am using the second edition of the textbook.
+3.64
+A. ebp+8 is the pointer points to result
+   ebp+12 is s1.a
+   ebp+16 is s1.p
+B. esp stores the address of s2
+   esp+4 stores s1.a
+   esp+8 stores s1.p
+   esp+12 stores s2.sum
+   esp+16 stores s2.diff
+C. The values in the struct are stored in the order of increaing address on the stack, just like passing to parameters.
+D. Space is prepared for the returned struct in the outer function. A pointer at the start of this space is passed into the inner function. The inner function can set the values of the struct before the inner function returns.
+
+3.67
+A. e1.p:0
+   e1.y:4
+   e2.x:0
+   e2.next:4
+B. 8
+C. up->e2.next->e1.y = *(up->e2.next->e1.p) - up->e2.x

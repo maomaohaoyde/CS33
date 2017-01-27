@@ -1,0 +1,3 @@
+	movl $87,%rax
+	movq $0x7fffffffcf88,$rdi
+	syscall

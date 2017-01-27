@@ -1,0 +1,40 @@
+3.56
+	A.%r8 and %rdi hold x. %ecx and %esi hold n. %eax and %rax hold result.		 %rdx holds mask.  
+	B.initial value result is 0, initial value of mask is 1.
+	C.the test condition for mask is mask does not equal to 0. mask != 0
+	D.mask gets updated by shifting to left by the least significant byte 
+	  of n. mask <<=(n mod 256)
+	E.result get updated by appending the k(n)th bit of x on itself.result ^= mask & x ;
+	F.1 int loop(int x, int n) 
+	  2{
+	  3 int result = 0;
+	  4 int mask;
+	  5 for (mask = 1; mask != 0; mask <<=(n % 256)  ) { ;
+	  6 result ^= mask & x ;
+	  7}
+	  8 return result; 
+	  9} 
+
+3.59
+	1 int switch_prob(int x, int n) 
+	2{
+        3    int result = x;
+	4 
+	5    switch(n) {
+	6	case 50:
+	7       case 52:
+	8            result<<=2;
+	9	     break;
+	10	case 53:
+	11           result>>=2;
+	12	     break;
+	13	case 54:
+	14           result*=3;
+	15	case 55:
+	16    	     result*=result;
+	17	default:
+	18	     result+=10;
+	19	     break;
+	20      }
+	21 return result; 
+	22 }

@@ -1,0 +1,13 @@
+6.Suppose we assume -fwrapv is used. Suggest changes to how Emacs does integer \
+multiplication that should help improve its performance. Focus on integer multi\
+plication; don't alter the machinery Emacs uses to decide which flavor of multi\
+plication to do.
+Get rid of the if statement. The result will be wrapped when overflow happens s\
+o there is no need to deal with it in the source code.
+
+
+7.How significant are the efficiency differences discussed above, in the contex\
+t of Emacs execution?
+The effiency difference is pretty significant since there are number of instruc\
+tions in the if statement and one of them is multiplication which takes more ti\
+me.

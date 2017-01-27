@@ -1,0 +1,21 @@
+Gather instruction traces
+log into linux server 09
+$ gdb ~eggert/bin64/bin/emacs-24.5
+enter the executable using gdb
+(gdb) break Ftimes
+under gdb, set a break point
+(gdb) set disassemble-next-line on
+set the format the output to be close to the format required
+(gdb) r -batch -eval '(print (* 6997 -4398042316799 179))'
+let the executable run and stop at the breakpoint
+use
+(gdb) si and (gdb) info register to check the value of the registers
+
+Examine integer overflow handling
+$ emacs test.c
+Copy the code into an emacs text file
+
+$ gcc -S -fno-asynchronous-unwind-tables -O2 test.c
+$ gcc -S -fno-asynchronous-unwind-tables -O2 -fsanitize=undefined test.c -o test1.s
+$ gcc -S -fno-asynchronous-unwind-tables -O2 -fwrapv test.c -o test2.s
+Use -S -fno-asynchronous-unwind-tables to make gcc generate human readable files.Compile in three ways as suggested

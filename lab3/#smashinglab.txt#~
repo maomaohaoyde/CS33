@@ -1,0 +1,36 @@
+wget http://web.cs.ucla.edu/classes/fall15/cs33/lab/sthttpd-2.27.0.tar.gz
+download the tarball
+
+tar -xzvf sthttpd-2.27.0.tar.gz
+untar the tarball
+
+cd sthttpd-2.27.0
+emacs src/thttpd.c
+open src/thttpd.c to apply the changes by hand
+
+./configure
+apply the configuration
+
+CFLAGS='-m32'
+LDFLAGS="Xlinker --rpath=/usr/local/cs/gcc-5.2.0/lib"
+change the flags
+
+make clean
+CFLAGS='-m32 -g3 -O2 -fno-inline -fstack-protector-strong'
+make
+mv src/thttpd src/thttpd-sp
+create thttpd-sp
+
+make clean
+CFLAGS='-m32 -g3 -O2 -fno-inline -fsanitize=address'
+make
+mv src/thttpd src/thttpd-as
+create thttpd-as
+
+make clean
+CFLAGS='-m32 -g3 -O2 -fno-inline'
+make
+mv src/thttpd src/thttpd-no
+create thttpd-no
+
+my port number is 12721

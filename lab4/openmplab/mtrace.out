@@ -1,0 +1,126 @@
+= Start
+@ ./omp:[0x400c7a] + 0x1c585f0 0x20000
+@ /lib64/libc.so.6:[0x7efdd54f696d] + 0x1c78600 0x238
+@ /lib64/libc.so.6:[0x7efdd54f696d] + 0x1c78840 0x238
+@ ./omp:[0x400cf3] + 0x7efdd448a010 0x1000000
+@ ./omp:[0x402b10] + 0x7efdd3489010 0x1000000
+@ ./omp:[0x402e86] - 0x7efdd3489010
+@ ./omp:[0x400f75] + 0x1c78a80 0x144
+@ ./omp:[0x40101a] + 0x1c78bd0 0x450
+@ ./omp:[0x40104b] + 0x1c79030 0x40000
+@ ./omp:[0x401056] + 0x1cb9040 0x40000
+@ ./omp:[0x401066] + 0x1cf9050 0x40000
+@ ./omp:[0x401091] + 0x1d39060 0x40000
+@ ./omp:[0x40109e] + 0x1d79070 0x40000
+@ ./omp:[0x4010ab] + 0x1db9080 0x40000
+@ ./omp:[0x4010b8] + 0x1df9090 0x40000
+@ ./omp:[0x4010c3] + 0x1e390a0 0x40000
+@ ./omp:[0x4010dd] + 0x1e790b0 0x8a0000
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271ad10 0xc0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e809] + 0x271ade0 0x108
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271aef0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271b140 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271b390 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271b5e0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271b830 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271ba80 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271bcd0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271bf20 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271c170 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271c3c0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271c610 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271c860 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271cab0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271cd00 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271cf50 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271d1a0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271d3f0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271d640 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271d890 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271dae0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271dd30 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271df80 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271e1d0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271e420 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271e670 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271e8c0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271eb10 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271ed60 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271efb0 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271f200 0x240
+@ /lib64/ld-linux-x86-64.so.2:(_dl_allocate_tls+0x25)[0x7efdd5f92de5] + 0x271f450 0x240
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x27190c0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x271f6a0
+@ /lib64/libgomp.so.1:[0x7efdd5a6e7b9] + 0x271f6a0 0x1c40
+@ /lib64/libgomp.so.1:[0x7efdd5a771f2] - 0x27190c0
+@ ./omp:[0x4013f6] - 0x1c78a80
+@ ./omp:[0x401400] - 0x1c78bd0
+@ ./omp:[0x401408] - 0x1c79030
+@ ./omp:[0x401412] - 0x1d39060
+@ ./omp:[0x40141c] - 0x1d79070
+@ ./omp:[0x401426] - 0x1db9080
+@ ./omp:[0x401430] - 0x1cb9040
+@ ./omp:[0x40143a] - 0x1cf9050
+@ ./omp:[0x401442] - 0x1df9090
+@ ./omp:[0x40144c] - 0x1e390a0
+@ ./omp:[0x400d3c] - 0x1e790b0
+@ /lib64/libc.so.6:(fclose+0x155)[0x7efdd54f5ff5] - 0x1c78600
+@ /lib64/libc.so.6:(fclose+0x155)[0x7efdd54f5ff5] - 0x1c78840
+@ ./omp:[0x400d7b] - 0x1c585f0
+@ ./omp:[0x400d83] - 0x7efdd448a010
+= End

@@ -1,0 +1,37 @@
+I'm using the second edition.
+2.88
+A.Yes, it always returns zero since both sides round the integer in the same way.
+B.No, if the different between two numbers is greater than Tmax32, the right side would overflow whereas the left side won't. e.g. x=0,y=Tmin32
+C.Yes, since they are all integers, there will not be rounding error since double is precise enough to present every integer.
+D.No, double won't be precise enough for 32bit int and another 32bit if they are large enough. e.g. dx=Tmax-2, dy=Tmax-1, dz= Tmax
+E.No, 0/0 gives NaN. any other numbers over itself gives 1. e.g. dx=0, dz=1
+
+2.89
+float fpwr2(int x)
+{
+    /* Result exponent and fraction */
+    unsigned exp, frac;
+    unsigned u;
+if (x < -149 ￼ ) {
+/* Too small. Return 0.0 */ 
+exp =0 ￼ ;
+frac =0 ￼ ;
+} else if (x < -126
+) {
+￼
+/* Denormalized result */
+exp =0 ￼ ;
+frac = 1<<(x<-126) ￼ ; }
+ else if (x < 128)
+ {
+￼        /* Normalized result. */
+exp = x+127 ￼ ;
+frac =0 ￼ ; } else {
+        /* Too big.  Return +oo */
+exp = 255￼ ;
+frac =0 ￼ ; }
+    /* Pack exp and frac into 32 bits */
+    u = exp << 23 | frac;
+    /* Return as float */
+    return u2f(u);
+}

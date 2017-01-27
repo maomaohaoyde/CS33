@@ -1,0 +1,474 @@
+	.file	"makeweb.c"
+	.local	argv0
+	.comm	argv0,8,8
+	.section	.rodata
+	.align 8
+.LC0:
+	.string	"%s: internal error, out of room\n"
+	.text
+	.type	check_room, @function
+check_room:
+.LFB2:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$16, %rsp
+	movl	%edi, -4(%rbp)
+	movl	%esi, -8(%rbp)
+	movl	-8(%rbp), %eax
+	cmpl	-4(%rbp), %eax
+	jle	.L3
+	movq	argv0(%rip), %rdx
+	movq	stderr(%rip), %rax
+	movl	$.LC0, %esi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	fprintf
+	movl	$1, %edi
+	call	exit
+.L3:
+	nop
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE2:
+	.size	check_room, .-check_room
+	.type	end_with_slash, @function
+end_with_slash:
+.LFB3:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$16, %rsp
+	movq	%rdi, -8(%rbp)
+	movq	-8(%rbp), %rax
+	movq	%rax, %rdi
+	call	strlen
+	leaq	-1(%rax), %rdx
+	movq	-8(%rbp), %rax
+	addq	%rdx, %rax
+	movzbl	(%rax), %eax
+	cmpb	$47, %al
+	je	.L6
+	movq	-8(%rbp), %rax
+	movq	$-1, %rcx
+	movq	%rax, %rdx
+	movl	$0, %eax
+	movq	%rdx, %rdi
+	repnz scasb
+	movq	%rcx, %rax
+	notq	%rax
+	leaq	-1(%rax), %rdx
+	movq	-8(%rbp), %rax
+	addq	%rdx, %rax
+	movw	$47, (%rax)
+.L6:
+	nop
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE3:
+	.size	end_with_slash, .-end_with_slash
+	.section	.rodata
+	.align 8
+.LC1:
+	.string	"Some part of the path %s does not exist.\nThis is probably a configuration error.\n"
+.LC2:
+	.string	"Created web directory %s\n"
+	.align 8
+.LC3:
+	.string	"%s already exists but is not a directory!\n"
+	.align 8
+.LC4:
+	.string	"%s already exists but you don't own it!\n"
+	.align 8
+.LC5:
+	.string	"Web directory %s already existed.\n"
+	.text
+	.type	check_dir, @function
+check_dir:
+.LFB4:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$176, %rsp
+	movq	%rdi, -168(%rbp)
+	movl	%esi, -172(%rbp)
+	movl	%edx, -176(%rbp)
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	leaq	-160(%rbp), %rdx
+	movq	-168(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	stat
+	testl	%eax, %eax
+	jns	.L8
+	call	__errno_location
+	movl	(%rax), %eax
+	cmpl	$2, %eax
+	je	.L9
+	movq	-168(%rbp), %rax
+	movq	%rax, %rdi
+	call	perror
+	movl	$1, %edi
+	call	exit
+.L9:
+	movq	-168(%rbp), %rax
+	movl	$493, %esi
+	movq	%rax, %rdi
+	call	mkdir
+	testl	%eax, %eax
+	jns	.L10
+	call	__errno_location
+	movl	(%rax), %eax
+	cmpl	$2, %eax
+	jne	.L11
+	movq	-168(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC1, %edi
+	movl	$0, %eax
+	call	printf
+	jmp	.L12
+.L11:
+	movq	-168(%rbp), %rax
+	movq	%rax, %rdi
+	call	perror
+.L12:
+	movl	$1, %edi
+	call	exit
+.L10:
+	movq	-168(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC2, %edi
+	movl	$0, %eax
+	call	printf
+	movl	-176(%rbp), %edx
+	movq	-168(%rbp), %rax
+	movl	$-1, %esi
+	movq	%rax, %rdi
+	call	chown
+	jmp	.L17
+.L8:
+	movl	-136(%rbp), %eax
+	andl	$61440, %eax
+	cmpl	$16384, %eax
+	je	.L14
+	movq	-168(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC3, %edi
+	movl	$0, %eax
+	call	printf
+	movl	$1, %edi
+	call	exit
+.L14:
+	movl	-132(%rbp), %eax
+	cmpl	-172(%rbp), %eax
+	je	.L15
+	movq	-168(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC4, %edi
+	movl	$0, %eax
+	call	printf
+	movl	$1, %edi
+	call	exit
+.L15:
+	movq	-168(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC5, %edi
+	movl	$0, %eax
+	call	printf
+.L17:
+	nop
+	movq	-8(%rbp), %rax
+	xorq	%fs:40, %rax
+	je	.L16
+	call	__stack_chk_fail
+.L16:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE4:
+	.size	check_dir, .-check_dir
+	.section	.rodata
+.LC6:
+	.string	"usage:  %s\n"
+.LC7:
+	.string	"%s: can't find your username\n"
+.LC8:
+	.string	"/usr/local/www"
+.LC9:
+	.string	""
+.LC10:
+	.string	"Created symbolic link %s\n"
+	.align 8
+.LC11:
+	.string	"%s already exists but is not a\nsymbolic link!  Perhaps you have a real web subdirectory in your\nhome dir from a previous web server configuration?  You may have\nto rename it, run %s again, and then copy in the old\ncontents.\n"
+	.align 8
+.LC12:
+	.string	"Symbolic link %s already existed.\n"
+	.align 8
+.LC13:
+	.string	"Symbolic link %s already existed\nbut it points to the wrong place!  Attempting to remove and\nrecreate it.\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB5:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	pushq	%rbx
+	subq	$15240, %rsp
+	.cfi_offset 3, -24
+	movl	%edi, -15236(%rbp)
+	movq	%rsi, -15248(%rbp)
+	movq	%fs:40, %rax
+	movq	%rax, -24(%rbp)
+	xorl	%eax, %eax
+	movq	-15248(%rbp), %rax
+	movq	(%rax), %rax
+	movq	%rax, argv0(%rip)
+	cmpl	$1, -15236(%rbp)
+	je	.L19
+	movq	argv0(%rip), %rdx
+	movq	stderr(%rip), %rax
+	movl	$.LC6, %esi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	fprintf
+	movl	$1, %edi
+	call	exit
+.L19:
+	call	getuid
+	movl	%eax, %edi
+	call	getpwuid
+	movq	%rax, -15224(%rbp)
+	cmpq	$0, -15224(%rbp)
+	jne	.L20
+	movq	argv0(%rip), %rdx
+	movq	stderr(%rip), %rax
+	movl	$.LC7, %esi
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	fprintf
+	movl	$1, %edi
+	call	exit
+.L20:
+	movq	-15224(%rbp), %rax
+	movq	(%rax), %rax
+	movq	%rax, -15216(%rbp)
+	movq	-15224(%rbp), %rax
+	movq	32(%rax), %rax
+	movq	%rax, -15208(%rbp)
+	movq	$.LC8, -15200(%rbp)
+	movq	$.LC9, -15192(%rbp)
+	movq	-15200(%rbp), %rax
+	movq	%rax, %rdi
+	call	strlen
+	movl	%eax, %ebx
+	movq	-15192(%rbp), %rax
+	movq	%rax, %rdi
+	call	strlen
+	addl	%eax, %ebx
+	movq	-15216(%rbp), %rax
+	movq	%rax, %rdi
+	call	strlen
+	addl	%ebx, %eax
+	addl	$3, %eax
+	movl	%eax, %esi
+	movl	$5000, %edi
+	call	check_room
+	movq	-15200(%rbp), %rdx
+	leaq	-15040(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	strcpy
+	leaq	-15040(%rbp), %rax
+	movq	%rax, %rdi
+	call	end_with_slash
+	movq	-15192(%rbp), %rax
+	movzbl	(%rax), %eax
+	testb	%al, %al
+	je	.L21
+	movq	-15192(%rbp), %rdx
+	leaq	-15040(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	strcat
+	leaq	-15040(%rbp), %rax
+	movq	%rax, %rdi
+	call	end_with_slash
+.L21:
+	movq	-15216(%rbp), %rdx
+	leaq	-15040(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	strcat
+	movq	-15208(%rbp), %rax
+	movq	%rax, %rdi
+	call	strlen
+	addl	$13, %eax
+	movl	%eax, %esi
+	movl	$5000, %edi
+	call	check_room
+	movq	-15208(%rbp), %rdx
+	leaq	-10032(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	strcpy
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rdi
+	call	end_with_slash
+	leaq	-10032(%rbp), %rax
+	movq	$-1, %rcx
+	movq	%rax, %rdx
+	movl	$0, %eax
+	movq	%rdx, %rdi
+	repnz scasb
+	movq	%rcx, %rax
+	notq	%rax
+	leaq	-1(%rax), %rdx
+	leaq	-10032(%rbp), %rax
+	addq	%rdx, %rax
+	movabsq	$7520839207173125488, %rbx
+	movq	%rbx, (%rax)
+	movl	$7105908, 8(%rax)
+	movq	-15224(%rbp), %rax
+	movl	20(%rax), %edx
+	movq	-15224(%rbp), %rax
+	movl	16(%rax), %ecx
+	leaq	-15040(%rbp), %rax
+	movl	%ecx, %esi
+	movq	%rax, %rdi
+	call	check_dir
+.L22:
+	leaq	-15184(%rbp), %rdx
+	leaq	-10032(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	lstat
+	testl	%eax, %eax
+	jns	.L23
+	call	__errno_location
+	movl	(%rax), %eax
+	cmpl	$2, %eax
+	je	.L24
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rdi
+	call	perror
+	movl	$1, %edi
+	call	exit
+.L24:
+	leaq	-10032(%rbp), %rdx
+	leaq	-15040(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	symlink
+	testl	%eax, %eax
+	jns	.L25
+	call	__errno_location
+	movl	(%rax), %eax
+	cmpl	$2, %eax
+	jne	.L26
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC1, %edi
+	movl	$0, %eax
+	call	printf
+	jmp	.L27
+.L26:
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rdi
+	call	perror
+.L27:
+	movl	$1, %edi
+	call	exit
+.L25:
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC10, %edi
+	movl	$0, %eax
+	call	printf
+	jmp	.L28
+.L23:
+	movl	-15160(%rbp), %eax
+	andl	$61440, %eax
+	cmpl	$40960, %eax
+	je	.L29
+	movq	argv0(%rip), %rdx
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC11, %edi
+	movl	$0, %eax
+	call	printf
+	movl	$1, %edi
+	call	exit
+.L29:
+	leaq	-5024(%rbp), %rcx
+	leaq	-10032(%rbp), %rax
+	movl	$5000, %edx
+	movq	%rcx, %rsi
+	movq	%rax, %rdi
+	call	readlink
+	testq	%rax, %rax
+	jns	.L30
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rdi
+	call	perror
+	movl	$1, %edi
+	call	exit
+.L30:
+	leaq	-5024(%rbp), %rdx
+	leaq	-15040(%rbp), %rax
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L31
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC12, %edi
+	movl	$0, %eax
+	call	printf
+	jmp	.L28
+.L31:
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rsi
+	movl	$.LC13, %edi
+	movl	$0, %eax
+	call	printf
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rdi
+	call	unlink
+	testl	%eax, %eax
+	jns	.L22
+	leaq	-10032(%rbp), %rax
+	movq	%rax, %rdi
+	call	perror
+	movl	$1, %edi
+	call	exit
+.L28:
+	movl	$0, %edi
+	call	exit
+	.cfi_endproc
+.LFE5:
+	.size	main, .-main
+	.ident	"GCC: (GNU) 5.2.0"
+	.section	.note.GNU-stack,"",@progbits

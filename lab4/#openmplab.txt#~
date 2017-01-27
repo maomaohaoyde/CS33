@@ -1,0 +1,41 @@
+download openmplab.tar from ccle
+
+$ scp /Users/wangjingtao/Downloads/openmplab.tar jingtaow@lnxsrv09.seas.ucla.edu:~/
+copy tar file to linux server
+
+$ tar -xvf openmplab.tar
+unzip the file
+
+$ cd openmplab
+$ make seq
+$ ./seq
+run the make file and executable
+
+FUNC TIME : 0.751155
+TOTAL TIME : 2.950185
+
+$ make seq GPROF=1
+$ gprof seq | less
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 31.08      0.18     0.18       16    11.26    11.74  func1
+ 27.62      0.34     0.16       15    10.68    10.68  func2
+ 15.54      0.43     0.09                             init
+  6.91      0.47     0.04  5177344     0.00     0.00  rand2
+  6.91      0.51     0.04        1    40.05    72.50  addSeed
+  3.45      0.53     0.02                             etext
+  3.45      0.55     0.02                             filter
+  1.73      0.56     0.01        1    10.01    10.01  imdilateDisk
+  1.73      0.57     0.01                             findIndex
+  1.73      0.58     0.01                             sequence
+  0.00      0.58     0.00   983058     0.00     0.00  rand1
+  0.00      0.58     0.00   491520     0.00     0.00  __libc_csu_init
+  0.00      0.58     0.00       30     0.00     0.00  func5
+  0.00      0.58     0.00       16     0.00     0.00  dilateMatrix
+  0.00      0.58     0.00       15     0.00     0.00  func4
+  0.00      0.58     0.00        2     0.00     0.00  round
+  0.00      0.58     0.00        1     0.00     0.00  fillMatrix
+  0.00      0.58     0.00        1     0.00     0.00  getNeighbors
+
+The 
